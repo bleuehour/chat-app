@@ -36,6 +36,7 @@ const HomeScreen = () => {
   useLayoutEffect(() => {
     navigation.setOptions({
       title: "Chats",
+      
       headerTitleStyle: { color: "black" },
       headerStyle: { backgroundColor: "white" },
       headerLeft: () => (

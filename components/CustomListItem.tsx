@@ -2,6 +2,7 @@ import { Avatar, ListItem } from "@rneui/themed";
 import {
   collection,
   doc,
+  DocumentData,
   onSnapshot,
   orderBy,
   query,
@@ -16,13 +17,9 @@ type ListItemProps = {
 };
 
 export type data = {
-  data: {
-    displayName: string;
-    email: string;
-    message: string;
-    photoUrl: string;
-    timestamp: Date;
-  };
+  id: string;
+
+  data: DocumentData;
 };
 
 const CustomListItem = ({ id, chatName, enterChat }: ListItemProps) => {
