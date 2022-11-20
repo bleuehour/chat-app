@@ -7,13 +7,21 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 
-const Stack = createNativeStackNavigator();
-
 const globalScreenOptions = {
   headerStyle: { backgroundColor: "#120124" },
   headerTitleStyle: { color: "white" },
   headerTintColor: "white",
 };
+
+export type RootStackParamList = {
+  Login: any;
+  Register: any;
+  Home: undefined;
+  AddChat: any;
+  Chat: any;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (

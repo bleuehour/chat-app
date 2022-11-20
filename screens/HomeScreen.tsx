@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Avatar } from "@rneui/themed";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import React, { useEffect, useLayoutEffect, useState } from "react";
@@ -10,12 +11,18 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { RootStackParamList } from "../App";
 import CustomListItem, { data } from "../components/CustomListItem";
 import { auth, db } from "../firebase";
 
+export type HomeScreeNavProps = NativeStackNavigationProp<
+  RootStackParamList,
+  "Home"
+>;
+
 const HomeScreen = () => {
   const [chats, setChats] = useState<data[]>();
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreeNavProps>();
 
   useEffect(() => {
     const q = query(collection(db, "chats"));
@@ -36,7 +43,7 @@ const HomeScreen = () => {
   useLayoutEffect(() => {
     navigation.setOptions({
       title: "Chats",
-      
+
       headerTitleStyle: { color: "black" },
       headerStyle: { backgroundColor: "white" },
       headerLeft: () => (

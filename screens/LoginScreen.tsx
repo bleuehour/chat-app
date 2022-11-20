@@ -1,17 +1,22 @@
-import {
-    useNavigation
-} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Button, Input } from "@rneui/themed";
 import { StatusBar } from "expo-status-bar";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { KeyboardAvoidingView, StyleSheet, View } from "react-native";
+import { RootStackParamList } from "../App";
 import { auth } from "../firebase";
+
+export type LoginScreeNavProps = NativeStackNavigationProp<
+  RootStackParamList,
+  "Login"
+>;
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigation = useNavigation();
+  const navigation = useNavigation<LoginScreeNavProps>();
 
   useEffect(() => {
     const unsubsuscribe = auth.onAuthStateChanged((authUser) => {
